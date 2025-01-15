@@ -11,7 +11,7 @@
           - stow
           - zsh
           - git
-          - zoxide
+          - curl
         state: present
 
     - name: Change user shell to zsh
@@ -38,3 +38,7 @@
 
     - name: Install fzf
       ansible.builtin.shell: ~/.fzf/install --all
+
+    - name: Install zoxide
+      ansible.builtin.shell: |
+        curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
