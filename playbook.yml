@@ -11,6 +11,8 @@
           - stow
           - zsh
           - git
+          - fzf
+          - zoxide
         state: present
     - name: Change user shell to zsh
       become: true
