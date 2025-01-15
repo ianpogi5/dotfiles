@@ -86,6 +86,5 @@ alias df='df -BG'
 
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
