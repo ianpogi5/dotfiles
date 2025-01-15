@@ -1,6 +1,7 @@
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+PATH="$HOME/.local/bin:$HOME/bin:$PATH:$HOME/development/flutter/bin"
 export PATH
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -81,6 +82,7 @@ alias c='clear'
 alias act="source .venv/bin/activate"
 alias pvenv="python -m venv .venv"
 alias pip-dev="pip install -r requirements_dev.txt"
+alias df='df -BG'
 
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
