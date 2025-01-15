@@ -11,14 +11,15 @@
           - stow
           - zsh
           - git
-          - fzf
           - zoxide
         state: present
+
     - name: Change user shell to zsh
       become: true
       ansible.builtin.user:
         name: "{{ the_user }}"
         shell: /bin/zsh
+
     - name: Clone dotfiles repo
       ansible.builtin.git:
         repo: https://github.com/ianpogi5/dotfiles.git
@@ -28,3 +29,12 @@
       ansible.builtin.shell: stow --adopt .
       args:
         chdir: ~/dotfiles
+
+    - name: Clone fzf repo
+      ansible.builtin.git:
+        repo: https://github.com/junegunn/fzf.git
+        dest: ~/.fzf
+        depth: 1
+
+    - name: Install fzf
+      ansible.builtin.shell: ~/.fzf/install --all
