@@ -1,0 +1,28 @@
+- hosts: all
+  become: false
+  vars:
+    the_user: "{{ ansible_user_id }}"
+  tasks:
+    - name: Install packages
+      become: true
+      ansible.builtin.package:
+        name:
+          - vim
+          - stow
+          - zsh
+          - git
+        state: present
+    - name: Change user shell to zsh
+      become: true
+      ansible.builtin.user:
+        name: "{{ the_user }}"
+        shell: /bin/zsh
+    - name: Clone dotfiles repo
+      ansible.builtin.git:
+        repo: https://github.com/ianpogi5/dotfiles.git
+        dest: ~/dotfiles
+
+    - name: Run stow
+      ansible.builtin.shell: stow --adopt .
+      args:
+        chdir: ~/dotfiles
