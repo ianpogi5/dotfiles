@@ -15,3 +15,4 @@ RCS
 inventory # ansible
 playbook.yml # ansible
 nord.omp.json
+install.sh
