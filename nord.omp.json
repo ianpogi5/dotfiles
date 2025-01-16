@@ -106,13 +106,13 @@
           "type": "root"
         },
         {
-          "background": "#b48ead",
-          "foreground": "#ffffff",
+          "background": "#8fbcbb",
+          "foreground": "#4c566a",
           "properties": {
             "always_enabled": true
           },
           "style": "plain",
-          "template": "<transparent>\ue0b0</> \ueba2 {{ .FormattedMs }}\u2800<#b48ead,transparent>\ue0b0</>",
+          "template": "<transparent>\ue0b0</> \ueba2 {{ .FormattedMs }}\u2800<#8fbcbb,transparent>\ue0b0</>",
           "type": "executiontime"
         }
       ],
@@ -141,6 +141,19 @@
       ]
     }
   ],
+  "transient_prompt": {
+    "foreground_templates": [
+      "{{if gt .Code 0}}#bf616a{{end}}",
+      "{{if eq .Code 0}}#a3be8c{{end}}"
+    ],
+    "background": "transparent",
+    "template": "❯ "
+  },
+  "secondary_prompt": {
+    "foreground": "#d8dee9",
+    "background": "transparent",
+    "template": "❯❯ "
+  },
   "console_title_template": "{{ .Shell }} in {{ .Folder }}",
   "final_space": true,
   "version": 3
