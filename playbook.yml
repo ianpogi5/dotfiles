@@ -44,21 +44,10 @@
       ansible.builtin.shell: |
         curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
-    - name: ensure fonts directory
-      file:
-        path: "{{ lookup('env', 'HOME') }}/.fonts"
-        state: directory
+    - name: Install oh my posh
+      ansible.builtin.shell: |
+        curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 
-    - name: Hack exists
-      shell: "ls {{ lookup('env', 'HOME') }}/.fonts/Hack*Nerd*Font*"
-      register: hack_exists
-      ignore_errors: yes
-
-    - name: Download Hack
-      when: hack_exists is failed
-      ansible.builtin.unarchive:
-        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
-        dest: "{{ lookup('env', 'HOME') }}/.fonts/"
-        remote_src: yes
-
-
+    - name: Install OMP font
+      ansible.builtin.shell: |
+        ~/.local/bin/oh-my-posh font install meslo   
