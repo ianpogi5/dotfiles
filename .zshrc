@@ -4,7 +4,9 @@ fi
 PATH="$HOME/.local/bin:$HOME/bin:$PATH:$HOME/development/flutter/bin"
 export PATH
 
-eval "$(oh-my-posh init zsh)"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh)"
+fi
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
