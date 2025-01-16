@@ -13,6 +13,7 @@
           - git
           - curl
           - unzip
+          - tar
         state: present
 
     - name: Change user shell to zsh
@@ -51,3 +52,19 @@
     - name: Install OMP font
       ansible.builtin.shell: |
         ~/.local/bin/oh-my-posh font install meslo
+
+    - name: Install eza
+      become: true
+      ansible.builtin.shell: |
+        curl -sSfL https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -o eza.tar.gz
+        tar xzf eza.tar.gz
+        rm -f eza.tar.gz
+        chmod +x eza
+        chown root:root eza
+        mv eza /usr/bin/eza
+
+    - name: Install eza theme
+      ansible.builtin.shell: |
+        git clone https://github.com/eza-community/eza-themes.git ~/.local/eza-themes
+        mkdir -p ~/.config/eza
+        ln -sf ~/.local/eza-themes/themes/default.yml ~/.config/eza/theme.yml
