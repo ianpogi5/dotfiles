@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: "{{ host | default('home') }}"
   become: false
   vars:
     the_user: "{{ ansible_user_id }}"
@@ -50,4 +50,4 @@
 
     - name: Install OMP font
       ansible.builtin.shell: |
-        ~/.local/bin/oh-my-posh font install meslo   
+        ~/.local/bin/oh-my-posh font install meslo
