@@ -5,7 +5,7 @@ PATH="$HOME/.local/bin:$HOME/bin:$PATH:$HOME/development/flutter/bin"
 export PATH
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh)"
+  eval "$(oh-my-posh init zsh --config ~/dotfiles/nord.omp.json)"
 fi
 
 # Set the directory we want to store zinit and plugins
