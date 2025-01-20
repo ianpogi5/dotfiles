@@ -14,6 +14,7 @@
           - curl
           - unzip
           - tar
+          - btop
         state: present
 
     - name: Change user shell to zsh
