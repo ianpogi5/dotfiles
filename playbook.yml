@@ -103,3 +103,9 @@
         rm -f macchina.tar.gz
         chmod +x macchina
         mv macchina ~/.local/bin/macchina
+
+    - name: Clone eza repo
+      ansible.builtin.git:
+        repo: https://github.com/catppuccin/zsh-syntax-highlighting.git
+        dest: ~/.local/catppuccin-zsh-syntax-highlighting
+        update: true
