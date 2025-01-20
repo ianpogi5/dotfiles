@@ -4,7 +4,7 @@
     the_user: "{{ ansible_user_id }}"
   tasks:
     - name: Install packages
-      become: "{{ ansible_become | default(false) }}"
+      become: "{{ ansible_become | default(true) }}"
       ansible.builtin.package:
         name:
           - vim
@@ -17,7 +17,7 @@
         state: present
 
     - name: Change user shell to zsh
-      become: "{{ ansible_become | default(false) }}"
+      become: "{{ ansible_become | default(true) }}"
       ansible.builtin.user:
         name: "{{ the_user }}"
         shell: /bin/zsh
@@ -26,6 +26,7 @@
       ansible.builtin.git:
         repo: https://github.com/ianpogi5/dotfiles.git
         dest: ~/dotfiles
+        update: true
 
     - name: Run stow
       ansible.builtin.shell: stow --adopt .
@@ -36,6 +37,7 @@
       ansible.builtin.git:
         repo: https://github.com/junegunn/fzf.git
         dest: ~/.fzf
+        update: true
         depth: 1
 
     - name: Install fzf
@@ -45,16 +47,33 @@
       ansible.builtin.shell: |
         curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
+    - name: Check if oh my posh exists
+      ansible.builtin.stat:
+        path: "~/.local/bin/oh-my-posh"
+      register: omp
+
     - name: Install oh my posh
       ansible.builtin.shell: |
         curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+      when: not omp.stat.exists
+
+    - name: Upgrade oh my posh
+      ansible.builtin.shell: |
+        ~/.local/bin/oh-my-posh upgrade
+      when: omp.stat.exists
 
     - name: Install OMP font
       ansible.builtin.shell: |
         ~/.local/bin/oh-my-posh font install meslo
+      when: not omp.stat.exists
+
+    - name: Check if eza exists
+      ansible.builtin.stat:
+        path: "/usr/bin/eza"
+      register: eza
 
     - name: Install eza
-      become: "{{ ansible_become | default(false) }}"
+      become: "{{ ansible_become | default(true) }}"
       ansible.builtin.shell: |
         curl -sSfL https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -o eza.tar.gz
         tar xzf eza.tar.gz
@@ -62,9 +81,16 @@
         chmod +x eza
         chown root:root eza
         mv eza /usr/bin/eza
+      when: not eza.stat.exists
+
+    - name: Clone eza repo
+      ansible.builtin.git:
+        repo: https://github.com/eza-community/eza-themes.git
+        dest: ~/.local/eza-themes
+        update: true
 
     - name: Install eza theme
       ansible.builtin.shell: |
-        git clone https://github.com/eza-community/eza-themes.git ~/.local/eza-themes
         mkdir -p ~/.config/eza
         ln -sf ~/.local/eza-themes/themes/default.yml ~/.config/eza/theme.yml
+      when: not eza.stat.exists
