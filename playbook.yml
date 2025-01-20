@@ -93,7 +93,7 @@
     - name: Install eza theme
       ansible.builtin.shell: |
         mkdir -p ~/.config/eza
-        ln -sf ~/.local/eza-themes/themes/default.yml ~/.config/eza/theme.yml
+        ln -sf ~/.local/eza-themes/themes/catppuccin.yml ~/.config/eza/theme.yml
       when: not eza.stat.exists
 
     - name: Install macchina

@@ -1,3 +1,6 @@
+set termguicolors
+set encoding=UTF-8
+
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -15,15 +18,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf.vim'
 "Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'arcticicestudio/nord-vim'
-
+"Plug 'arcticicestudio/nord-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Vim settings
 filetype plugin indent on
 set number
 "colorscheme dracula
-colorscheme nord
+"colorscheme nord
+colorscheme catppuccin_mocha
 
 " Start NERDTree and leave the cursor in it.
 "autocmd VimEnter * NERDTree | wincmd p
