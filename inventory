@@ -9,7 +9,7 @@ nas
 frigate
 prom
 loki
-traefik
+traefik ansible_become=false
 home
 vw
 
