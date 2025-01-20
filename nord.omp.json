@@ -5,6 +5,14 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "foreground": "#3b4252",
+          "background": "#d8dee9",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+        },
+        {
           "background": "#5e81ac",
           "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
@@ -63,12 +71,8 @@
           "background": "#ebcb8b",
           "foreground": "#111111",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "display_mode": "files",
-            "fetch_virtual_env": false
-          },
           "style": "powerline",
-          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "template": " \ue235 {{ .Full }} ",
           "type": "python"
         },
         {
