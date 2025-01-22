@@ -68,7 +68,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='eza -lah'
+alias ls='eza --icons=always'
+alias ll='eza -lah --icons=always'
 alias c='clear'
 alias act="source .venv/bin/activate"
 alias pvenv="python -m venv .venv"
