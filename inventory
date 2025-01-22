@@ -1,17 +1,14 @@
-[home]
-tamacti
+[kdc]
 toranada
 stow-test
 pve
-plex
-ted
-nas
-frigate
-prom
-loki
+ted ansible_become=false
+frigate ansible_become=false
+loki ansible_become=false
 traefik ansible_become=false
-home
-vw
+home ansible_become=false
+vw ansible_become=false
+wazuh
 
 [edgeworks]
 linux-db1-pvt.equipweb.biz
@@ -19,14 +16,10 @@ linux-db2-pvt.equipweb.biz
 integration-pvt.equipweb.biz
 monitoring-pvt.equipweb.biz
 appsmith-pvt.equipweb.biz
-windows-web1-pvt.equipweb.biz
-windows-web2-pvt.equipweb.biz
-windows-web-indo-pvt.equipweb.biz
 magento-pvt.equipweb.biz
 traefik-pvt.equipweb.biz
 integration2-pvt.equipweb.biz
 linux-db3-pvt.equipweb.biz
-windows-web3-pvt.equipweb.biz
 linux-test-pvt.equipweb.biz
 linux-db-load-test-pvt.equipweb.biz
 linux-db4-pvt.equipweb.biz
