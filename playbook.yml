@@ -94,7 +94,6 @@
       ansible.builtin.shell: |
         mkdir -p ~/.config/eza
         ln -sf ~/.local/eza-themes/themes/catppuccin.yml ~/.config/eza/theme.yml
-      when: not eza.stat.exists
 
     - name: Install macchina
       ansible.builtin.shell: |
@@ -104,7 +103,7 @@
         chmod +x macchina
         mv macchina ~/.local/bin/macchina
 
-    - name: Clone eza repo
+    - name: Clone zsh syntax highlighting repo
       ansible.builtin.git:
         repo: https://github.com/catppuccin/zsh-syntax-highlighting.git
         dest: ~/.local/catppuccin-zsh-syntax-highlighting
