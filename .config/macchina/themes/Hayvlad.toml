@@ -1,0 +1,61 @@
+# Lithium
+
+spacing         = 1
+padding         = 0
+hide_ascii      = false
+separator       = " "
+key_color       = "Yellow"
+separator_color = "Yellow"
+prefer_small_ascii = true
+
+[palette]
+type            = "Light"
+glyph           = "●"
+spacing         = 1
+visible         = false
+
+[bar]
+glyph           = "●"
+symbol_open     = '('
+symbol_close    = ')'
+visible         = false
+hide_delimiters = true
+
+[box]
+title           = " "
+border          = "plain"
+visible         = false
+
+[box.inner_margin]
+x               = 2
+y               = 1
+
+[custom_ascii]
+color           = "Yellow"
+
+[randomize]
+key_color       = false
+separator_color = false
+pool            = "base"
+
+[keys]
+host            = "\uf007"
+kernel          = "\ueb78"
+battery         = ""
+os              = ""
+de              = ""
+wm              = ""
+distro          = "\uf109"
+terminal        = ""
+shell           = ""
+packages        = ""
+uptime          = ""
+memory          = "\uefc5"
+machine         = ""
+local_ip        = "\uf06f3"
+backlight       = ""
+resolution      = ""
+cpu_load        = "\uf4bc"
+cpu             = "\uf4bc"
+gpu             = ""
+disk_space      = "\uf0c7"
