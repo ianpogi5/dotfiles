@@ -26,9 +26,12 @@ call plug#end()
 " Vim settings
 filetype plugin indent on
 set number
-"colorscheme dracula
-"colorscheme nord
-colorscheme catppuccin_mocha
+
+if empty(glob('~/.vim/plugged/catppuccin'))
+  "colorscheme dracula
+  "colorscheme nord
+  colorscheme catppuccin_mocha
+endif
 
 " Start NERDTree and leave the cursor in it.
 "autocmd VimEnter * NERDTree | wincmd p
