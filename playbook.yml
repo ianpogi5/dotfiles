@@ -14,8 +14,36 @@
           - curl
           - unzip
           - tar
+          - make
+        state: present
+
+    - name: Check if btop exists
+      ansible.builtin.stat:
+        path: "/usr/bin/btop"
+      register: btop
+
+    - name: Install btop
+      become: "{{ ansible_become | default(true) }}"
+      ansible.builtin.package:
+        name:
           - btop
         state: present
+      when: not btop.stat.exists
+      ignore_errors: true
+      register: btop_pkg
+
+    - name: Install btop manually
+      become: "{{ ansible_become | default(true) }}"
+      ansible.builtin.shell: |
+        curl -sSfL https://github.com/aristocratos/btop/releases/download/v1.4.0/btop-x86_64-linux-musl.tbz -o btop.tbz
+        tar -xvjf btop.tbz
+        cd btop
+        PREFIX=/usr make install
+        cd ..
+        rm -fR btop*
+      when:
+        - btop_pkg is defined
+        - (btop_pkg.skipped is defined and not btop_pkg.skipped) or (btop_pkg.failed is defined and btop_pkg.failed)
 
     - name: Change user shell to zsh
       become: "{{ ansible_become | default(true) }}"
@@ -79,6 +107,10 @@
       ansible.builtin.shell: |
         ~/.local/bin/oh-my-posh font install meslo
       when: not omp.stat.exists
+
+    - name: Install vim plugins and themes
+      ansible.builtin.shell: |
+        vim +PlugInstall +qa
 
     - name: Check if eza exists
       ansible.builtin.stat:
