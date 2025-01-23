@@ -106,7 +106,9 @@
     - name: Install OMP font
       ansible.builtin.shell: |
         ~/.local/bin/oh-my-posh font install meslo
-      when: not omp.stat.exists
+      when: 
+        - not omp.stat.exists
+        - font_install is defined and font_install
 
     - name: Install vim plugins and themes
       ansible.builtin.shell: |
