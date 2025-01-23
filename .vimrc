@@ -27,7 +27,7 @@ call plug#end()
 filetype plugin indent on
 set number
 
-if empty(glob('~/.vim/plugged/catppuccin'))
+if !empty(glob('~/.vim/plugged/catppuccin'))
   "colorscheme dracula
   "colorscheme nord
   colorscheme catppuccin_mocha
