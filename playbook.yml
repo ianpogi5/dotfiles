@@ -160,3 +160,10 @@
         repo: https://github.com/catppuccin/zsh-syntax-highlighting.git
         dest: ~/.local/catppuccin-zsh-syntax-highlighting
         update: true
+    
+    - name: Install zsh plugins
+      ansible.builtin.shell: |
+        source ~/.zshrc
+      args:
+        executable: /usr/bin/zsh
+
