@@ -1,0 +1,13 @@
+- name: Execute infocmp and pipe to tic on a group of servers
+  hosts: "{{ host | default('kdc') }}"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Copy the terminal info from localhost to remote servers
+      delegate_to: localhost
+      shell: infocmp -x
+      register: terminal_info
+
+    - name: Apply terminal info to the remote server
+      shell: echo "{{ terminal_info.stdout }}" | tic -x -
