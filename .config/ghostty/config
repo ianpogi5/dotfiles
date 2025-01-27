@@ -1,0 +1,8 @@
+theme = catppuccin-mocha
+font-family = "MesloLGL Nerd Font Mono"
+font-size = 14
+background-opacity = 0.9
+background-blur-radius = 20
+window-height = 30
+window-width = 120
+shell-integration-features = sudo
