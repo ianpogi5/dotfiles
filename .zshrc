@@ -75,6 +75,7 @@ alias act="source .venv/bin/activate"
 alias pvenv="python -m venv .venv"
 alias pip-dev="pip install -r requirements_dev.txt"
 alias df='df -BG'
+alias sudo='sudo '
 
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
