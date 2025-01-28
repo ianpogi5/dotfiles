@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'fresh2dev/zellij.vim'
 Plug 'junegunn/fzf.vim'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'arcticicestudio/nord-vim'
