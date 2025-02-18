@@ -82,7 +82,7 @@ alias sudo='sudo '
 eval "$(zoxide init --cmd cd zsh)"
 
 # Custom zsh
-for file in ~/.zsh_custom/*.zsh; do
+for file in ~/.zsh_custom/*.zsh(N); do
     [ -r "$file" ] && source "$file"
 done
 
