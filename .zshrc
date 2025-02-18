@@ -81,5 +81,10 @@ alias sudo='sudo '
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init --cmd cd zsh)"
 
+# Custom zsh
+for file in ~/.zsh_custom/*.zsh; do
+    [ -r "$file" ] && source "$file"
+done
+
 # Show system info
 macchina
